@@ -1,0 +1,26 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package nupal_service;
+
+import View.Home;
+
+/**
+ *
+ * @author Barato Soft Solution
+ */
+public class NUPAL_Service {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        Home hm = new Home();
+        hm.Config();
+        hm.setVisible(true);
+    }
+    
+}
