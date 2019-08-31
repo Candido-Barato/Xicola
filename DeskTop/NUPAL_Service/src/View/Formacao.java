@@ -6,9 +6,12 @@
 package View;
 
 import static View.Auxiliar.auxJanela;
+import View.Formulario.Cadastro_Pessoa;
+import static View.Home.addPainelCentro;
 import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -17,6 +20,7 @@ import javax.swing.JPanel;
 public class Formacao extends JPanel implements Janela{
     private JPanel jpCentro, jpPrincipal, jpNorte, jpSull;
     private JButton jbAluno, jbFormador, jbTurma, jbServicos;
+    private JTextField jtNome, jtApelido, jtNomePai, jtNomeMae;
 
     @Override
     public void Config() {
@@ -31,6 +35,10 @@ public class Formacao extends JPanel implements Janela{
         jpCentro.add(jbFormador);
         jpCentro.add(jbTurma);
         jpCentro.add(jbServicos);
+        jpCentro.add(jtApelido);
+        jpCentro.add(jtNome);
+        jpCentro.add(jtNomeMae);
+        jpCentro.add(jtNomePai);
     }
 
     @Override
@@ -39,7 +47,7 @@ public class Formacao extends JPanel implements Janela{
         jpPrincipal=auxJanela.jpPanel();
         jpNorte=auxJanela.jpPanel();
         jpSull=auxJanela.jpPanel();
-        auxJanela.configBordaTitulo(this,"Janela Formacao");
+        auxJanela.configBordaTitulo(this,"Cadastro de Dados Pessoais");
         jbFormador = auxJanela.ConfigBotao("Formador");
         jbAluno = auxJanela.ConfigBotao("Aluno");
         jbTurma = auxJanela.ConfigBotao("Turmas");
@@ -47,11 +55,23 @@ public class Formacao extends JPanel implements Janela{
         this.setBackground(Color.DARK_GRAY);
         auxJanela.setLayoutBord(this, 10, 10);
         auxJanela.setLayoutBord(jpPrincipal, 10, 10);
-        auxJanela.setLayoutGrid(jpCentro,2,4, 20,20);
+        auxJanela.setLayoutGrid(jpCentro,4,2, 20,20);
+        
+         jtNome = new JTextField();
+        jtApelido = new JTextField();
+        jtNomePai = new JTextField();
+        jtNomeMae = new JTextField();
     }
 
     @Override
     public void Evento() {
+        jbAluno.addActionListener((ae) -> {
+            Cadastro_Pessoa  cp = new Cadastro_Pessoa();
+            cp.Config();
+              addPainelCentro(cp);
+        
+        });
+       
     }
     
 }

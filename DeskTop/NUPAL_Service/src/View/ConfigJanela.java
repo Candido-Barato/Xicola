@@ -155,4 +155,18 @@ private  Font f = new java.awt.Font("Times New Roman", 2, 18);
                 javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP,
                 f, Color.GREEN));
     }
+    
+    public void bagGroundNull(JComponent jc){
+        jc.setBackground(null);
+        jc.setForeground(Color.WHITE);
+    }
+    
+    public JPanel addDoisComponentes(JComponent jc1,JComponent jc2){
+        JPanel p = jpPanel();
+        setLayoutGrid(p, 1, 2, 20, 5);
+        p.add(jc1);
+        p.add(jc2);
+        
+        return p;
+    }
 }
