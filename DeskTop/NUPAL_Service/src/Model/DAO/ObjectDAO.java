@@ -5,7 +5,6 @@
  */
 package Model.DAO;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.List;
 
@@ -16,10 +15,10 @@ import java.util.List;
 public interface ObjectDAO <T>{
     
     public T Create(ResultSet rss);
-    public T Read(T x);
+    public T Read();
     public void Update(T x);
     public void Delete(T x);
-    public List<T> Listar(T x);
+    public List<T> Listar();
     public void Create();
    
     

@@ -33,7 +33,7 @@ public class PessoaDAO extends GenericoDAO implements ObjectDAO<Pessoa>{
         return p;
     }
     @Override
-    public Pessoa Read(Pessoa x) {
+    public Pessoa Read() {
         Pessoa p = new Pessoa();
         try {
             ResultSet rstt=super.Read(super.getSql(), super.getParamentro());
@@ -58,7 +58,7 @@ public class PessoaDAO extends GenericoDAO implements ObjectDAO<Pessoa>{
     }
 
     @Override
-    public List<Pessoa> Listar(Pessoa x) {
+    public List<Pessoa> Listar() {
         ArrayList<Pessoa> listaPessoa = new ArrayList<>();
         try {
             ResultSet rstt=super.Read(super.getSql(), super.getParamentro());

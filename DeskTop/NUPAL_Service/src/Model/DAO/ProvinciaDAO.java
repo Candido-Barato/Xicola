@@ -5,7 +5,7 @@
  */
 package Model.DAO;
 
-import Model.Distrito;
+import Model.Provincia;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,25 +17,25 @@ import java.util.logging.Logger;
  *
  * @author Barato Soft Solution
  */
-public class DistritoDAO extends GenericoDAO implements ObjectDAO<Distrito>{
+public class ProvinciaDAO extends GenericoDAO implements ObjectDAO<Provincia>{
    
     @Override
-    public Distrito Create(ResultSet rss) {
-        Distrito p = new Distrito();
+    public Provincia Create(ResultSet rss) {
+        Provincia p = new Provincia();
         try {
-            p.setId_distrito(rss.getInt(1));
-            p.setId_Prov(rss.getInt(2));
-            p.setDistrito(rss.getString(3));
+            p.setId_Prov(rss.getInt(1));
+            p.setCodPais(rss.getInt(2));
+            p.setProvincia(rss.getString(3));
         } catch (SQLException ex) {
             super.setStatus(true);
-             System.out.println("Essro "+ex.getLocalizedMessage()+" Fonte Create(ResultSet rss) ProvinciaDao ");
-            Logger.getLogger(DistritoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Essro "+ex.getLocalizedMessage()+" Fonte Create(ResultSet rss) ProvinciaDao ");
+            Logger.getLogger(ProvinciaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return p;
     }
     @Override
-    public Distrito Read() {
-       Distrito p = new Distrito();
+    public Provincia Read() {
+       Provincia p = new Provincia();
         try {
             ResultSet rstt=super.Read(super.getSql(), super.getParamentro());
             while (rstt.next()) {
@@ -43,24 +43,24 @@ public class DistritoDAO extends GenericoDAO implements ObjectDAO<Distrito>{
             }
         } catch (SQLException ex) {
              super.setStatus(true);
-            Logger.getLogger(DistritoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProvinciaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return p;
     }
 
     @Override
-    public void Update(Distrito x) {
+    public void Update(Provincia x) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void Delete(Distrito x) {
+    public void Delete(Provincia x) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Distrito> Listar() {
-        ArrayList<Distrito> listaPessoa = new ArrayList<>();
+    public List<Provincia> Listar() {
+        ArrayList<Provincia> listaPessoa = new ArrayList<>();
         try {
             ResultSet rstt=super.Read(super.getSql(), super.getParamentro());
             while(rstt.next()) {
@@ -71,7 +71,7 @@ public class DistritoDAO extends GenericoDAO implements ObjectDAO<Distrito>{
             return listaPessoa;
         } catch (SQLException ex) {
              super.setStatus(true);
-            Logger.getLogger(DistritoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProvinciaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return listaPessoa;
     }
