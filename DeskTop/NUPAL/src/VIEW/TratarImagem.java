@@ -96,8 +96,13 @@ public class TratarImagem extends JPanel{
     }
         
     public ImageIcon criarImage(String url, int n, int m){
-        ImageIcon im = new ImageIcon(getClass().getResource(url));
-        im.setImage(im.getImage().getScaledInstance(n, m, 100));
+        ImageIcon im=new ImageIcon();
+        try {
+           im = new ImageIcon(getClass().getResource(url));
+           im.setImage(im.getImage().getScaledInstance(n, m, 100));
+        } catch (NullPointerException e) {
+            System.out.println("Erro "+e.getMessage());
+        }
         return im;
     
     }

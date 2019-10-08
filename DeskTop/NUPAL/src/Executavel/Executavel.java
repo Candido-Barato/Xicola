@@ -6,6 +6,7 @@
 package Executavel;
 
 import VIEW.Autenticar;
+import VIEW.Home;
 
 /**
  *
@@ -13,8 +14,11 @@ import VIEW.Autenticar;
  */
 public class Executavel {
     public static void main(String[] args) {
-        Autenticar aut = new Autenticar();
-        aut.Config();
+        /*Autenticar aut = new Autenticar();
+        aut.Config();*/
+        Home hm = new Home();
+         hm.Config();
+         hm.setVisible(true);
     }
     
 }

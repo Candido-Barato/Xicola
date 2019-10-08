@@ -26,7 +26,7 @@ public class Pessoa {
     }
 
     public Pessoa() {
-        this("","","","Solteiro",'M',new Date());
+        this("","Aluno","","Solteiro",'M',new Date());
     }
     
     

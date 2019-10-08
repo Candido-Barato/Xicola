@@ -43,8 +43,8 @@ public class AutenticarDao extends GenericoDAO implements ObjectDAO<Usuario> {
             while (rstt.next()) {
                 p=Create(rstt);
             }
-        } catch (SQLException ex) {
-             super.setStatus(true);
+        } catch (SQLException|NullPointerException  ex) {
+            System.out.println("Problema ao ler Usuario "+ex.getMessage()+" Fonte Usuario {Read}");
         }
         return p;
     }

@@ -18,16 +18,16 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class Conexao {
-    public  PreparedStatement prst;
-    public  ResultSet rst;
-    public Connection com;
+    public  PreparedStatement prst=null;
+    public  ResultSet rst=null;
+    public Connection com=null;
     public   CallableStatement call;
     private static final String USUARIO = "root";
     private static final String SENHA = "";
     private static final String DATABASE = "nupal_centro";
     private static final String DRIVER_CONEXAO = "com.mysql.jdbc.Driver";
     private static final String STR_CONEXAO = "jdbc:mysql://localhost:3306/";
-    
+    private boolean status=false;
     
     public Conexao() {
     
@@ -38,12 +38,8 @@ public class Conexao {
         try {
             Class.forName(DRIVER_CONEXAO);
             conect = DriverManager.getConnection(STR_CONEXAO + DATABASE, USUARIO, SENHA);
-        } catch(ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "Driver MySql nao foi encontrado no bamco de dados: "
-                    +e.getMessage(),"Conexao com Base de dados (BDconexao), ", JOptionPane.ERROR_MESSAGE);
-        } catch(SQLException s) {
-            JOptionPane.showMessageDialog(null, "Erro ao conectar com a base de dadosno bamco de dados: "
-                    +s.getMessage(),"Conexao com Base de dados (BDconexao) ", JOptionPane.ERROR_MESSAGE);
+        } catch(ClassNotFoundException | SQLException e) {
+            System.out.println("Problema ao ao conectar "+e.getMessage()+" Fonte Conexao {Conect()}");
         }
         return conect;
     }
@@ -57,8 +53,7 @@ public class Conexao {
                 System.out.println("Statment fechado com sucesso");
             }
         }catch(SQLException e) {
-            JOptionPane.showMessageDialog(null, "Nao foi possivel fechar o statement"
-                +e.getMessage(),"Aviso importante (BDconexao)",JOptionPane.ERROR_MESSAGE);
+            System.out.println("Nao foi possivel fechar o statement"+e.getMessage()+" Aviso importante (BDconexao)");
         }
     }
     
@@ -69,8 +64,8 @@ public class Conexao {
                 System.out.println("Conexao Fechada a conexao com o Banco de Dados");
             }           
         } catch(SQLException e) {
-            JOptionPane.showMessageDialog(null, "Nao foi possivel fechar a conexao"
-                +e.getMessage(),"Aviso importante (BDconexao)",JOptionPane.ERROR_MESSAGE);
+            System.out.println("Nao foi possivel fechar a conexao"
+                +e.getMessage()+" Aviso importante (BDconexao)");
         }
     }
     
@@ -83,10 +78,17 @@ public class Conexao {
                 System.out.println("ResultSet fechado com sucesso");
             }
         }catch(SQLException e) {
-            JOptionPane.showMessageDialog(null, "Nao foi possivel fechar o ResultSet!"
-                +e.getMessage(),"Aviso importante (BDconexao)",JOptionPane.ERROR_MESSAGE);
+            System.out.println("Nao foi possivel fechar o ResultSet!"
+                +e.getMessage()+" Aviso importante (BDconexao)");
         }
      
 
+    }
+     public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }

@@ -64,9 +64,8 @@ public class AlunoDao extends GenericoDAO implements ObjectDAO<Aluno> {
             }
             fechaConexao(com, prst,rst);
             
-        } catch (SQLException ex) {
-             super.setStatus(true);
-             System.out.println("Problema no Listar Alunos "+ex.getMessage());
+        } catch (SQLException|NullPointerException ex) {
+             System.out.println("Problema no Listar Alunos "+ex.getMessage()+" Fonte AlunoDAO {Read()}");
         }
         return a;
     }
@@ -80,10 +79,8 @@ public class AlunoDao extends GenericoDAO implements ObjectDAO<Aluno> {
                 listaAlunos.add(Create(rstt));
             }
             fechaConexao(com, prst,rst);
-            
-        } catch (SQLException ex) {
-             super.setStatus(true);
-             System.out.println("Problema no Listar Alunos "+ex.getMessage());
+        } catch (SQLException|NullPointerException ex) {
+             System.out.println("Problema no Listar Alunos "+ex.getMessage()+" Fonte AlunoDAO {Listar()}");
         }
         return listaAlunos;
 

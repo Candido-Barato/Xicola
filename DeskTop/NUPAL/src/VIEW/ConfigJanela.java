@@ -5,6 +5,7 @@
  */
 package VIEW;
 
+import static VIEW.Auxiliar.auxJanela;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -14,13 +15,17 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.Toolkit;
+import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSeparator;
+import javax.swing.text.MaskFormatter;
 
 /**
  *
@@ -28,7 +33,41 @@ import javax.swing.JPanel;
  */
 public class ConfigJanela {
 private  Font f = new java.awt.Font("Times New Roman", 2, 18);
+private Color corBotao = new Color(128,184,196);
+private Color corTexto = new Color(0, 153, 0);
+
+
+    public Font getF() {
+        return f;
+    }
+
+    public void setF(Font f) {
+        this.f = f;
+    }
+
+    public Color getCorTexto() {
+        return corTexto;
+    }
+
+    public void setCorTexto(Color corTexto) {
+        this.corTexto = corTexto;
+    }
     
+
+    public Color getCorBotao() {
+        return corBotao;
+    }
+
+    public void setCorBotao(Color corBotao) {
+        this.corBotao = corBotao;
+    }
+    
+    public void addBordCampo(JComponent jc, String titulo){
+     jc.setBorder(javax.swing.BorderFactory.createTitledBorder(null, titulo, javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, getF(), getCorTexto()));
+    jc.setForeground(Color.WHITE);
+    jc.setBackground(null);
+    jc.setFont(getF());
+    }
 
     public void addCamponenteJanela(JComponent dest, JComponent comp,
             int gx, int gy, int lx, int ly) {
@@ -180,12 +219,35 @@ private  Font f = new java.awt.Font("Times New Roman", 2, 18);
     
     public JLabel addDoisComponentes(JComponent jc1,JComponent jc2){
         JLabel p = new JLabel();
-        
-        setLayoutGridBag(p);
-        addCamponenteJanela(p, jc1, 1, 1, 1, 1);
-      addCamponenteJanela(p, separador(), 2, 1, 1, 1);
-        addCamponenteJanela(p, jc2, 3, 1, 1, 1);
+        p.setBackground(null);
+        setLayoutGrid(p,1,2,10,10);
+        p.add(jc1);
+        p.add(jc2);
         
         return p;
     }
+    
+    public  JFormattedTextField campoFormatado(String msc){
+        MaskFormatter mascaraDataNasc;
+        JFormattedTextField dataNas=null;
+        try {
+            mascaraDataNasc = new MaskFormatter(msc);
+            dataNas = new JFormattedTextField(mascaraDataNasc);
+            } catch (ParseException ex) {
+                System.out.println("Falha "+ex.getMessage());
+            
+            }
+        return dataNas;
+    
+    }
+    public JPanel cabecalho(JComponent jc1){
+            JSeparator sp = new JSeparator();
+            JPanel p1 = new JPanel();
+            p1.setLayout(new GridLayout(2, 1));
+            p1.add(jc1);
+            p1.add(sp);
+            p1.setBackground(null);
+            jc1.setBorder(null);
+            return p1;
+        }
 }

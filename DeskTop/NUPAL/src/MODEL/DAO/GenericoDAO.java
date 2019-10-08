@@ -19,7 +19,7 @@ public class GenericoDAO extends Conexao{
     private final Connection conect;
     private String sql;
     private Object []paramentro;
-    private boolean status;
+    
 
     protected GenericoDAO() {
         this.conect=super.conect();
@@ -29,62 +29,72 @@ public class GenericoDAO extends Conexao{
         return conect;
     }
     
+    
+    
     protected void Create(String sql,Object[] paramentro){
-        status=false;
         try {
+            if(conect!=null){
             prst = conect.prepareStatement(sql);
             for (int i = 0; i < paramentro.length; i++) {
                 prst.setObject(i+1,paramentro[i]);
             }
             prst.execute();
             prst.close();
+            }else{
+                System.out.println("Nao Foi possivel conectar ");
+            }
         } catch (SQLException e) {
-            status=true;
             System.out.println("Erro "+e.getLocalizedMessage()+" Fonte Create()}");
         }catch (Exception es){
         }
     }
     
     protected void Update(String sql,Object[] paramentro){
-        status=false;
         try {
+            if(conect!=null){
             prst = conect.prepareStatement(sql);
             for (int i = 0; i < paramentro.length; i++) {
                 prst.setObject(i+1,paramentro[i]);
             }
             prst.execute();
              fechaConexao(conect, prst);
+             }else{
+                System.out.println("Nao Foi possivel conectar ");
+            }
         } catch (SQLException e) {
-            status=true;
             System.out.println("Erro "+e.getLocalizedMessage()+" Fonte Create()}");
         }
     }
     
     protected void Delete(String sql,Object[] paramentro){
-        status=false;
         try {
+            if(conect!=null){
             prst = conect.prepareStatement(sql);
             for (int i = 0; i < paramentro.length; i++) {
                 prst.setObject(i+1,paramentro[i]);
             }
             prst.execute();
             fechaConexao(conect, prst);
+             }else{
+                System.out.println("Nao Foi possivel conectar ");
+            }
         } catch (SQLException e) {
-            status=true;
             System.out.println("Erro "+e.getLocalizedMessage()+" Fonte Create()}");
         }
     }
     
     protected ResultSet Read(String sql,Object[] paramentro){
-        status=false;
         try {
+            if(conect!=null){
             prst = conect.prepareStatement(sql);
             for (int i = 0; i < paramentro.length; i++) {
                 prst.setObject(i+1,paramentro[i]);
             }
             rst = prst.executeQuery();
+            }else{
+                System.out.println("Nao Foi possivel conectar ");
+            }
         } catch (SQLException e) {
-            status=true;
             System.out.println("Erro "+e.getLocalizedMessage()+" Fonte Read()}");
         }
         return rst;
@@ -106,13 +116,7 @@ public class GenericoDAO extends Conexao{
         this.paramentro = paramentro;
     }
 
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
+   
     
     
     
