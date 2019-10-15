@@ -9,10 +9,10 @@ package VIEW;
  *
  * @author NAVANE
  */
-public interface Janela {
+public interface JanelaFormularios {
     public void Config();
     public void Start();
     public void Evento();
-
+    public void ConfigDados();
     
 }

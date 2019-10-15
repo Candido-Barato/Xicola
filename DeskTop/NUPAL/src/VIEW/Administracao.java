@@ -37,6 +37,9 @@ public class Administracao extends JPanel implements Janela{
 
     @Override
     public void Evento() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+ 
     
 }

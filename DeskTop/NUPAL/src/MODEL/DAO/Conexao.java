@@ -24,7 +24,7 @@ public class Conexao {
     public   CallableStatement call;
     private static final String USUARIO = "root";
     private static final String SENHA = "";
-    private static final String DATABASE = "nupal_centro";
+    private static final String DATABASE = "gestao_pessoal";
     private static final String DRIVER_CONEXAO = "com.mysql.jdbc.Driver";
     private static final String STR_CONEXAO = "jdbc:mysql://localhost:3306/";
     private boolean status=false;

@@ -74,5 +74,6 @@ public class Formacaoo extends JPanel implements Janela{
         });
        
     }
+
     
 }

@@ -40,7 +40,6 @@ public class Alunos extends JPanel implements Janela {
     private JButton jbPrint, jbCadastrar, jbVoltar, jbFiltrar, jbPesquisa;
     private JTextField jtPesquisa;
     private ExplorarAluno exp;
-    public static Cadastro_Aluno_Controler cr;
 
     @Override
     public void Config() {
@@ -131,9 +130,11 @@ public class Alunos extends JPanel implements Janela {
             addPainelCentro(form);
         });
         jbCadastrar.addActionListener((ae) -> {
-            cr = new Cadastro_Aluno_Controler();
-            addPainelCentro(cr.getCadastrarAluno());
-            
+            Cadastro_Aluno_Controler cd = new   Cadastro_Aluno_Controler ();
+            cd.chamarEnvetos();
+            cd.preencherDadosComponentes();
+            addPainelCentro(cd.getViewAluno());
+           
         });
         jbPrint.addActionListener((ae) -> {
         });
