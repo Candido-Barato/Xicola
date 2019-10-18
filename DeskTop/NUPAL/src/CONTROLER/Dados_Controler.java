@@ -5,6 +5,7 @@
  */
 package CONTROLER;
 
+import MODEL.BO.ValidarCampo;
 import MODEL.DAO.DadosDao;
 import MODEL.VO.DadosComponentes;
 import MODEL.VO.Provincia_Distrito_Bairro;
@@ -18,6 +19,7 @@ public class Dados_Controler {
 
     private DadosComponentes dadosComponete;
     private DadosDao dadosD;
+    static ValidarCampo vlc = new ValidarCampo();
 
     public Dados_Controler(DadosComponentes dadosComponete, DadosDao dadosD) {
         this.dadosComponete = dadosComponete;
