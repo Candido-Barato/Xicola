@@ -8,6 +8,7 @@ package CONTROLER;
 import static CONTROLER.Dados_Controler.vlc;
 import MODEL.DAO.AlunoDao;
 import MODEL.VO.Aluno;
+import VIEW.Formacao.Alunos;
 import VIEW.Formacao.Cadastro_Aluno;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -142,12 +143,15 @@ public class Cadastro_Aluno_Controler implements ActionListener {
             }
         }
         if (ae.getSource() == viewAluno.getJbCancelar()) {
-            JOptionPane.showMessageDialog(viewAluno, "Cancelar");
+            int x=JOptionPane.showConfirmDialog(viewAluno, "Tem a Certeza Que deseja Cancelar o cadasto do aluno", "Cancelar Cadastro Aluno", JOptionPane.YES_NO_OPTION);
+            if(x==JOptionPane.YES_OPTION){
+                Alunos al = new Alunos();
+                al.Config();
+                VIEW.Home.addPainelCentro(al);
+            }
         }
         if (ae.getSource() == viewAluno.getJpStep_03().getJcRelacionameto()) {
-              JOptionPane.showMessageDialog(viewAluno, viewAluno.getJpStep_03().getJcRelacionameto().getSelectedIndex());
             if(viewAluno.getJpStep_03().getJcRelacionameto().getSelectedIndex() != -1){
-                JOptionPane.showMessageDialog(viewAluno, viewAluno.getJpStep_03().getJcRelacionameto().getSelectedIndex());
             viewAluno.getJpStep_03().getJtTipoRelacionamento().setVisible(viewAluno.getJpStep_03().getJcRelacionameto().getSelectedIndex() != -1 && viewAluno.getJpStep_03().getJcRelacionameto().getSelectedItem().equals("Outro"));
             viewAluno.getJpStep_03().getJtNomeEnc().setVisible(viewAluno.getJpStep_03().getJcRelacionameto().getSelectedIndex() != -1 && viewAluno.getJpStep_03().getJcRelacionameto().getSelectedItem().equals("Outro"));
             viewAluno.getJpStep_03().getJfContactoEnc().setVisible(viewAluno.getJpStep_03().getJcRelacionameto().getSelectedIndex() != -1 && viewAluno.getJpStep_03().getJcRelacionameto().getSelectedItem().equals("Outro"));

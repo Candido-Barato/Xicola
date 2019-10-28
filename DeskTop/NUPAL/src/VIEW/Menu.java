@@ -74,7 +74,11 @@ public class Menu extends JPanel implements Janela {
 
     @Override
     public void Evento() {
-
+        jbHome.addActionListener((ae) -> {
+            Inicial inn =new Inicial();
+            inn.Config();
+            addPainelCentro(inn);
+        });
         jbMenu.addActionListener((ae) -> {
 
             if (this.getSize().width == 50) {

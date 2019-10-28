@@ -21,6 +21,7 @@ public class Home extends JFrame implements Janela{
     private static JPanel jpCentro;
     private Superior sp;
     private Menu mm;
+    private Inicial inn;
     
 
     @Override
@@ -34,7 +35,7 @@ public class Home extends JFrame implements Janela{
         auxJanela.addCamponenteJanela(jpPrincipal,jpSul, 'S');
         JPanel jp = new JPanel();
         jp.add(new JLabel("BEM VINDO"));
-        addPainelCentro(jp);
+        addPainelCentro(inn);
         Evento();
         
 
@@ -45,7 +46,9 @@ public class Home extends JFrame implements Janela{
         jpCentro= new JPanel();
         jpPrincipal= new JPanel();
         JPanel pp = new JPanel();
-        
+        inn=new Inicial();
+        inn.Config();
+                
         jpSul= new JPanel();
         jpEste= new JPanel();
         jpOeste= new JPanel();
